@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para ti 💖</title>
+  <meta name="description" content="Una pequeña sorpresa con un video especial" />
+  <meta property="og:title" content="Para ti 💖" />
+  <meta property="og:description" content="Una pequeña sorpresa con un video especial" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ff5ea8" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💖</text></svg>">
+  <style>
+    :root{
+      --primary:#ff5ea8;
+      --bg:#fff7fb;
+      --text:#2a2a2a;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(255,94,168,0.2);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:linear-gradient(180deg,var(--bg),#ffe3f1);
+      display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .card{
+      width:min(900px,100%); background:var(--card); border-radius:24px; box-shadow:var(--shadow);
+      overflow:hidden; border:2px solid #ffd1e6;
+    }
+    header{
+      padding:28px 28px 0; text-align:center;
+    }
+    h1{ margin:0 0 6px; font-size:clamp(28px,4vw,40px); color:#e91e63; letter-spacing:0.3px; }
+    p.subtitle{ margin:0 0 18px; color:#7a2450; font-size:clamp(14px,2.2vw,18px); }
+    .video-wrap{ position:relative; padding:18px; }
+    video, .yt-embed{
+      width:100%; aspect-ratio:16/9; background:#000; border-radius:16px; border:1px solid #ffd1e6; box-shadow:var(--shadow);
+    }
+    .note{ text-align:center; color:#6b6b6b; font-size:14px; padding:8px 24px 24px; }
+    footer{ padding:0 24px 22px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+    .btn{
+      appearance:none; border:none; background:var(--primary); color:white; padding:12px 18px; border-radius:12px; font-weight:600;
+      cursor:pointer; transition:transform .08s ease, filter .2s ease; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    }
+    .btn:hover{ filter:brightness(1.05) }
+    .btn:active{ transform:translateY(1px) }
+    .ghost{ background:#fff; color:#e91e63; border:1.5px solid #ffc1dd }
+    .heart{ filter: drop-shadow(0 6px 14px rgba(233,30,99,.35)); }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <header>
+      <h1>Para ti, mi amor 💖</h1>
+      <p class="subtitle">Preparé este pequeño detalle para recordarte cuánto te quiero.</p>
+    </header>
+
+    <section class="video-wrap">
+      <!-- Opción A: Video subido directamente (recomendado si tu hosting lo soporta) -->
+      <video controls preload="metadata" poster="img/poster.jpg">
+        <source src="video/mi-video.mp4" type="video/mp4" />
+        Tu navegador no soporta el video embebido. Puedes <a href="video/mi-video.mp4">descargarlo aquí</a>.
+      </video>
+    </section>
+  </main>
+
+  <script>
+    // Mini confeti sin dependencias
+    function confetti(){
+      const colors=['#ff5ea8','#ff8bc5','#ffd1e6','#ff3e88','#ff6b9e'];
+      for(let i=0;i<80;i++){
+        const s=document.createElement('span');
+        s.textContent='❤';
+        s.style.position='fixed';
+        s.style.left=Math.random()*100+'vw';
+        s.style.top='-10vh';
+        s.style.fontSize=(Math.random()*20+10)+'px';
+        s.style.color=colors[Math.floor(Math.random()*colors.length)];
+        s.style.transition='transform 2.4s ease, opacity 2.4s ease';
+        s.style.zIndex=9999;
+        document.body.appendChild(s);
+        const x=(Math.random()*2-1)*200;
+        const y=window.innerHeight+100;
+        requestAnimationFrame(()=>{
+          s.style.transform=`translate(${x}px, ${y}px) rotate(${Math.random()*720-360}deg)`;
+          s.style.opacity='0';
+        });
+        setTimeout(()=>s.remove(),2600);
+      }
+    }
+  </script>
+</body>
+</html>
